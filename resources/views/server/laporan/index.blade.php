@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Transaksi')
-@section('heading', 'Transaksi')
+@section('title', 'Laporan')
+@section('heading', 'Laporan')
 @section('styles')
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
   <style>
@@ -51,10 +51,12 @@
           <thead>
             <tr>
               <td>No</td>
-              <td>Kode Pemesanan</td>
+              <td>Nama Customer</td>
+              <td>Tanggal Pemesanan</td>
               <td>Tujuan</td>
-              <td>Penumpang</td>
-              <td>Tanggal Berangkat</td>
+              <td>Tipe Bus</td>
+              <td>Harga Tiket</td>
+              <td>Transaksi</td>
               <th>Action</th>
             </tr>
           </thead>

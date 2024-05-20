@@ -50,82 +50,88 @@
       @csrf
       <div class="card-body">
         <input type="hidden" name="id" value="{{ $transportasi->id }}">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            value="{{ $transportasi->name }}"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="kode">Kode</label>
-          <input
-            type="text"
-            class="form-control"
-            id="kode"
-            name="kode"
-            value="{{ $transportasi->kode }}"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="jumlah">Jumlah Kursi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="jumlah"
-            name="jumlah"
-            onkeypress="return inputNumber(event)"
-            value="{{ $transportasi->jumlah }}"
-            required
-          />
-        </div>
-        <div class="form-group">
-    <label for="sisa_kursi">Sisa Kursi</label>
-    <input
-        type="number"
-        class="form-control"
-        id="sisa_kursi"
-        name="sisa_kursi"
-        placeholder="Sisa Kursi"
-        value="{{ old('sisa_kursi', $transportasi->sisa_kursi ?? '') }}"
-        required
-    />
-</div>
-        <div class="form-group">
-          <label for="category_id">Category</label><br>
-          <select
-            class="select2 form-control"
-            id="category_id"
-            name="category_id"
-            required
-            style="width: 100%; color: #6e707e;"
-          >
-            <option value="" disabled>-- Pilih Category --</option>
-            @foreach ($category as $data)
-              <option value="{{ $data->id }}"
-                @if ($data->id == $transportasi->category_id)
-                  selected
-                @endif
-              >{{ $data->name }}</option>
-            @endforeach
-          </select>
-        </div>
+        <div class="modal-body">
+            <input type="hidden" name="id">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Name Transportasi"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="kode">Kode</label>
+              <input
+                type="text"
+                class="form-control"
+                id="kode"
+                name="kode"
+                placeholder="Kode Transportasi"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="jumlah">Jumlah Kursi</label>
+              <input
+                type="text"
+                class="form-control"
+                id="jumlah"
+                name="jumlah"
+                onkeypress="return inputNumber(event)"
+                placeholder="Jumlah Kursi"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="status">Status</label>
+              <input
+                type="number"
+                class="form-control"
+                id="status"
+                name="status"
+                placeholder="Status"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="category_id">Category</label><br>
+              <select
+                class="select2 form-control"
+                id="category_id"
+                name="category_id"
+                required
+                style="width: 100%; color: #6e707e;"
+              >
+                <option value="" disabled selected>-- Pilih Category --</option>
+                @foreach ($category as $data)
+                  <option value="{{ $data->id }}">{{ $data->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Kembali
+            </button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </div>
+        </form>
       </div>
-      <div class="card-footer">
-        <a href="{{ route('transportasi.index') }}" class="btn btn-warning mr-2">Kembali</a>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form>
+    </div>
   </div>
 @endsection
 @section('script')
+  <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('vendor/select2/dist/js/select2.full.min.js') }}"></script>
   <script>
+    $(document).ready(function() {
+      $('#dataTable').DataTable();
+    });
     if(jQuery().select2) {
       $(".select2").select2();
     }

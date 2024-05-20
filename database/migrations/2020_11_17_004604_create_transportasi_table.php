@@ -20,6 +20,7 @@ class CreateTransportasiTable extends Migration
             $table->integer('jumlah');
             $table->integer('sisa_kursi'); // Add this line
             $table->unsignedBigInteger('category_id');
+            $table->boolean('status')->default(true); 
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('category');

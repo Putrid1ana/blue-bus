@@ -33,43 +33,45 @@ class TransportasiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $this->validate($request, [
-        'name' => 'required',
-        'kode' => 'required',
-        'jumlah' => 'required|integer',
-        'sisa_kursi' => 'required|integer',
-        'category_id' => 'required'
-    ]);
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'kode' => 'required',
+            'jumlah' => 'required|integer',
+            'sisa_kursi' => 'required|integer',
+            'category_id' => 'required',
+            'status' => 'required|boolean'
+        ]);
 
-    Transportasi::updateOrCreate(
-        [
-            'id' => $request->id
-        ],
-        [
-            'name' => $request->name,
-            'kode' => strtoupper($request->kode),
-            'jumlah' => $request->jumlah,
-            'sisa_kursi' => $request->sisa_kursi,
-            'category_id' => $request->category_id,
-        ]
-    );
+        Transportasi::updateOrCreate(
+            [
+                'id' => $request->id
+            ],
+            [
+                'name' => $request->name,
+                'kode' => strtoupper($request->kode),
+                'jumlah' => $request->jumlah,
+                'sisa_kursi' => $request->sisa_kursi,
+                'category_id' => $request->category_id,
+                'status' => $request->status
+            ]
+        );
 
-    if ($request->id) {
-        return redirect()->route('transportasi.index')->with('success', 'Success Update Transportasi!');
-    } else {
-        return redirect()->back()->with('success', 'Success Add Transportasi!');
+        if ($request->id) {
+            return redirect()->route('transportasi.index')->with('success', 'Success Update Transportasi!');
+        } else {
+            return redirect()->back()->with('success', 'Success Add Transportasi!');
+        }
     }
-}
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,52 +82,51 @@ class TransportasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-{
-    $category = Category::orderBy('name')->get();
-    $transportasi = Transportasi::find($id);
-    return view('server.transportasi.edit', compact('category', 'transportasi'));
-}
-
+    {
+        $category = Category::orderBy('name')->get();
+        $transportasi = Transportasi::find($id);
+        return view('server.transportasi.edit', compact('category', 'transportasi'));
+    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    
     public function update(Request $request, $id)
-{
-    $this->validate($request, [
-        'name' => 'required',
-        'kode' => 'required',
-        'jumlah' => 'required|integer',
-        'sisa_kursi' => 'required|integer',
-        'category_id' => 'required'
-    ]);
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'kode' => 'required',
+            'jumlah' => 'required|integer',
+            'sisa_kursi' => 'required|integer',
+            'category_id' => 'required',
+            'status' => 'required|boolean'
+        ]);
 
-    $transportasi = Transportasi::find($id);
-    $transportasi->update([
-        'name' => $request->name,
-        'kode' => strtoupper($request->kode),
-        'jumlah' => $request->jumlah,
-        'sisa_kursi' => $request->sisa_kursi,
-        'category_id' => $request->category_id,
-    ]);
+        $transportasi = Transportasi::find($id);
+        $transportasi->update([
+            'name' => $request->name,
+            'kode' => strtoupper($request->kode),
+            'jumlah' => $request->jumlah,
+            'sisa_kursi' => $request->sisa_kursi,
+            'category_id' => $request->category_id,
+            'status' => $request->status
+        ]);
 
-    return redirect()->route('transportasi.index')->with('success', 'Success Update Transportasi!');
-}
-
+        return redirect()->route('transportasi.index')->with('success', 'Success Update Transportasi!');
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -113,6 +113,18 @@
                 @endif
               >{{ $data->name }}</option>
             @endforeach
+            <div class="form-group">
+              <label for="status">Status</label>
+              <input
+                type="number"
+                class="form-control"
+                id="status"
+                name="status"
+                placeholder="Status"
+                required
+              />
+            </div>
+
           </select>
         </div>
       </div>

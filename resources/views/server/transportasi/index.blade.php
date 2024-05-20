@@ -5,7 +5,7 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
   <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
   <style>
-    thead > tr > th, tbody > tr > td{
+    thead > tr > th, tbody > tr > td {
       vertical-align: middle !important;
     }
 
@@ -32,7 +32,7 @@
     .text-muted {
       color: #6c757d !important;
     }
-    
+
     .select2-container .select2-selection--single {
       display: block;
       width: 100%;
@@ -46,7 +46,7 @@
       background-clip: padding-box;
       border: 1px solid #d1d3e2;
       border-radius: .35rem;
-      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
 
     .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -96,11 +96,12 @@
         >
           <thead>
             <tr>
-              <td>No</td>
-              <td>Kode</td>
-              <td>Name</td>
-              <td>Jumlah Kursi</td>
-              <td>Sisa Kursi</td>
+              <th>No</th>
+              <th>Kode</th>
+              <th>Name</th>
+              <th>Jumlah Kursi</th>
+              <th>Sisa Kursi</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -119,7 +120,8 @@
                 </td>
                 <td>{{ $data->jumlah }} Kursi</td>
                 <td>{{ $data->sisa_kursi }} Kursi</td>
-                <td>
+                <td>{{ $data->status ? 'Tersedia' : 'Tidak Tersedia' }}</td>
+                <td class="text-center">
                   <form
                     action="{{ route('transportasi.destroy', $data->id) }}"
                     method="POST"
@@ -234,6 +236,14 @@
                 @endforeach
               </select>
             </div>
+            <div class="form-group">
+              <label for="status">Status</label><br>
+              <select class="form-control" id="status" name="status" required>
+                <option value="0">-- Status Kursi --</option>
+                <option value="1">Tersedia</option>
+                <option value="2">Tidak Tersedia</option>
+              </select>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -258,11 +268,11 @@
       $(".select2").select2();
     }
     function inputNumber(e) {
-      const charCode = (e.which) ? e.which : w.keyCode;
+      const charCode = (e.which) ? e.which : e.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57)) {
         return false;
       }
       return true;
-    };
+    }
   </script>
 @endsection

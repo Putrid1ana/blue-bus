@@ -87,7 +87,7 @@
                     - {{ date('Y') }}
                   @endif
                   &nbsp; All rights reserved • by
-                  <a href="https://github.com" target="_blank"
+                  <a href="https://github.com/Putrid1ana/bus_web-mobile" target="_blank"
                     >A2</a
                   >.
                 </span>
@@ -161,7 +161,7 @@
                 - {{ date('Y') }}
               @endif
               &nbsp; All rights reserved • by
-              <a href="https://github.com" target="_blank"
+              <a href="https://github.com/Putrid1ana/bus_web-mobile" target="_blank"
                 >A2</a
               >.
             </span>

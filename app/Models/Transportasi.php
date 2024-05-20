@@ -14,7 +14,8 @@ class Transportasi extends Model
         'kode',
         'jumlah',
         'sisa_kursi',
-        'category_id'
+        'category_id',
+        'status'
     ];
 
     public function category()

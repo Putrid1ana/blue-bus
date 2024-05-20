@@ -5,7 +5,7 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
   <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
   <style>
-    thead > tr > th, tbody > tr > td{
+    thead > tr > th, tbody > tr > td {
       vertical-align: middle !important;
     }
 
@@ -100,7 +100,7 @@
               <td>Kode</td>
               <td>Name</td>
               <td>Jumlah Kursi</td>
-              <td>Sisa Kursi</td>
+              <td>Status</td>
               <th>Action</th>
             </tr>
           </thead>
@@ -118,7 +118,7 @@
                   </p>
                 </td>
                 <td>{{ $data->jumlah }} Kursi</td>
-                <td>{{ $data->sisa_kursi }} Kursi</td>
+                <td>{{ $data->status == 'available' ? 'Tersedia' : 'Tidak Tersedia' }}</td>
                 <td>
                   <form
                     action="{{ route('transportasi.destroy', $data->id) }}"
@@ -150,12 +150,12 @@
   </div>
   <!-- Add Modal -->
   <div
-  class="modal fade"
-  id="add-modal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
+    class="modal fade"
+    id="add-modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
   >
     <div class="modal-dialog">
       <div class="modal-content">
@@ -209,31 +209,34 @@
               />
             </div>
             <div class="form-group">
-              <label for="sisa_kursi">Sisa Kursi</label>
-              <input
-                type="number"
-                class="form-control"
-                id="sisa_kursi"
-                name="sisa_kursi"
-                placeholder="Sisa Kursi"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="category_id">Category</label><br>
+              <label for="status">Status</label>
               <select
-                class="select2 form-control"
-                id="category_id"
-                name="category_id"
+                class="form-control"
+                id="status"
+                name="status"
                 required
-                style="width: 100%; color: #6e707e;"
               >
-                <option value="" disabled selected>-- Pilih Category --</option>
-                @foreach ($category as $data)
-                  <option value="{{ $data->id }}">{{ $data->name }}</option>
-                @endforeach
+                <option value="">-- Pilih Status --</option>
+                <option value="available">Tersedia</option>
+                <option value="booked">Tidak Tersedia</option>
               </select>
             </div>
+            <div class="form-group">
+  <label for="category_id">Category</label><br>
+  <select
+    class="select2 form-control"
+    id="category_id"
+    name="category_id"
+    required
+    style="width: 100%; color: #6e707e;"
+  >
+    <option value="" selected>-- Pilih Category --</option>
+    @foreach ($category as $data)
+      <option value="{{ $data->id }}">{{ $data->name }}</option>
+    @endforeach
+  </select>
+</div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -254,15 +257,15 @@
     $(document).ready(function() {
       $('#dataTable').DataTable();
     });
-    if(jQuery().select2) {
+    if (jQuery().select2) {
       $(".select2").select2();
     }
     function inputNumber(e) {
-      const charCode = (e.which) ? e.which : w.keyCode;
+      const charCode = (e.which) ? e.which : e.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57)) {
         return false;
       }
       return true;
-    };
+    }
   </script>
 @endsection

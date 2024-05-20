@@ -13,24 +13,26 @@ class CreatePemesananTable extends Migration
      */
     public function up()
     {
-        Schema::create('pemesanan', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode');
-            $table->string('kursi')->nullable();
-            $table->timestamp('waktu');
-            $table->integer('total');
-            $table->enum('status', ['Belum Bayar', 'Sudah Bayar'])->default('Belum Bayar');
-            $table->unsignedBigInteger('rute_id');
-            $table->unsignedBigInteger('penumpang_id');
-            $table->unsignedBigInteger('petugas_id')->nullable();
-            $table->unsignedBigInteger('transportasi_id');
-            $table->timestamps();
+        if (!Schema::hasTable('pemesanan')) {
+            Schema::create('pemesanan', function (Blueprint $table) {
+                $table->id();
+                $table->string('kode');
+                $table->string('kursi')->nullable();
+                $table->timestamp('waktu');
+                $table->integer('total');
+                $table->enum('status', ['Belum Bayar', 'Sudah Bayar'])->default('Belum Bayar');
+                $table->unsignedBigInteger('rute_id');
+                $table->unsignedBigInteger('penumpang_id');
+                $table->unsignedBigInteger('petugas_id')->nullable();
+                $table->unsignedBigInteger('transportasi_id');
+                $table->timestamps();
 
-            $table->foreign('rute_id')->references('id')->on('rute');
-            $table->foreign('penumpang_id')->references('id')->on('users');
-            $table->foreign('petugas_id')->references('id')->on('users');
-            $table->foreign('transportasi_id')->references('id')->on('transportasi');
-        });
+                $table->foreign('rute_id')->references('id')->on('rute');
+                $table->foreign('penumpang_id')->references('id')->on('penumpang');
+                $table->foreign('petugas_id')->references('id')->on('petugas');
+                $table->foreign('transportasi_id')->references('id')->on('transportasi');
+            });
+        }
     }
 
     /**
@@ -40,9 +42,6 @@ class CreatePemesananTable extends Migration
      */
     public function down()
     {
-        Schema::table('pemesanan', function (Blueprint $table) {
-            $table->dropForeign(['transportasi_id']);
-            $table->dropColumn('transportasi_id');
-        });
+        Schema::dropIfExists('pemesanan');
     }
 }

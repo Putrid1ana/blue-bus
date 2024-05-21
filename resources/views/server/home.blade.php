@@ -38,7 +38,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Data Transportasi</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Data Armada</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transportasi }}</div>
             </div>
             <div class="col-auto">
@@ -67,38 +67,34 @@
 
   <!-- Bagian Baru untuk Gambar di Bawah -->
   <div class="row">
-  <div class="col-12">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"></h6>
+    <div class="col-xl-6 col-md-12 mb-4">
+      <div class="card shadow h-100 py-2">
+        <div class="card-body text-center">
+          <img src="{{ asset('img/bus6.jpg') }}" class="img-src" alt="Descriptive Alt Text">
+          <p>layanan bus yang sangat nyaman dan dilengakapi beberapa fasilitas yang lengkap akan menemani perjalanan anda</p>
+        </div>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6 text-center">
-            <img src="{{ asset('img/bus1.jpg') }}" class="img-src" alt="Descriptive Alt Text">
-            <p>sat set</p>
-          </div>
-          <style>
-  .img-src {
-    max-width: 50%;
-    height: auto;
-  }
-</style>
-          <div class="col-md-6 text-center">
-            <img src="{{ asset('img/bus2.jpg') }}" class="img-src" alt="Descriptive Alt Text">
-            <p>cepat dan terpecaya dijamin langsung sampai surga</p>
-          </div>
+    </div>
+    <style>
+    .img-src {
+      max-width: 60%;
+      height: auto;
+    }
+  </style>
+    <div class="col-xl-6 col-md-12 mb-4">
+      <div class="card shadow h-100 py-2">
+        <div class="card-body text-center">
+          <img src="{{ asset('img/bus7.jpg') }}" class="img-src" alt="Descriptive Alt Text">
+          <p>layanan bus yang sangat nyaman dan dilengakapi beberapa fasilitas yang lengkap akan menemani perjalanan anda </p>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<style>
-  .img-src {
-    max-width: 50%;
-    height: auto;
-  }
-</style>
-
+  <style>
+    .img-src {
+      max-width: 60%;
+      height: auto;
+    }
+  </style>
 @endsection

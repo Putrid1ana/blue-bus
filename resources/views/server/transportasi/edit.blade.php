@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Edit Transportasi')
-@section('heading', 'Edit Transportasi')
+@section('title', 'Edit Armada')
+@section('heading', 'Edit Armada')
 @section('styles')
   <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
   <style>
@@ -96,23 +96,6 @@
         required
     />
 </div>
-        <div class="form-group">
-          <label for="category_id">Category</label><br>
-          <select
-            class="select2 form-control"
-            id="category_id"
-            name="category_id"
-            required
-            style="width: 100%; color: #6e707e;"
-          >
-            <option value="" disabled>-- Pilih Category --</option>
-            @foreach ($category as $data)
-              <option value="{{ $data->id }}"
-                @if ($data->id == $transportasi->category_id)
-                  selected
-                @endif
-              >{{ $data->name }}</option>
-            @endforeach
             <div class="form-group">
               <label for="status">Status</label>
               <input

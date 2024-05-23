@@ -233,7 +233,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="transportasi_id">Transportasi</label><br>
+              <label for="transportasi_id">Armada</label><br>
               <select
                 class="select2 form-control"
                 id="transportasi_id"
@@ -241,7 +241,7 @@
                 required
                 style="width: 100%; color: #6e707e;"
               >
-                <option value="" disabled selected>-- Pilih Transportasi --</option>
+                <option value="" disabled selected>-- Pilih Armada --</option>
                 @foreach ($transportasi as $data)
                   <option value="{{ $data->id }}">{{ $data->kode }} - {{ $data->name }}</option>
                 @endforeach

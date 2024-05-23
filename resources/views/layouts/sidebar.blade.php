@@ -23,8 +23,7 @@
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="{{ route('rute.index') }}">Rute</a>
-        <a class="collapse-item" href="{{ route('transportasi.index') }}">Transportasi</a>
-        <a class="collapse-item" href="{{ route('category.index') }}">Category</a>
+        <a class="collapse-item" href="{{ route('transportasi.index') }}">Armada</a>
         <a class="collapse-item" href="{{ route('user.index') }}">User</a>
       </div>
     </div>
@@ -33,7 +32,7 @@
   <li class="nav-item">
     <a class="nav-link" href="{{ route('petugas') }}">
       <i class="fas fa-clipboard-check"></i>
-      <span>Verifikasi</span></a>
+      <span>Transaksi</span></a>
   </li>
   <!-- Nav Item - Transaksi -->
   <li class="nav-item">

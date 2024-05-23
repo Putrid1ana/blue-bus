@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Transportasi')
-@section('heading', 'Transportasi')
+@section('title', 'Armada')
+@section('heading', 'Armada')
 @section('styles')
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"/>
   <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
@@ -162,7 +162,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Transportasi</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Armada</h5>
           <button
             type="button"
             class="close"
@@ -220,21 +220,6 @@
                 placeholder="Sisa Kursi"
                 required
               />
-            </div>
-            <div class="form-group">
-              <label for="category_id">Category</label><br>
-              <select
-                class="select2 form-control"
-                id="category_id"
-                name="category_id"
-                required
-                style="width: 100%; color: #6e707e;"
-              >
-                <option value="" disabled selected>-- Pilih Category --</option>
-                @foreach ($category as $data)
-                  <option value="{{ $data->id }}">{{ $data->name }}</option>
-                @endforeach
-              </select>
             </div>
             <div class="form-group">
               <label for="status">Status</label><br>

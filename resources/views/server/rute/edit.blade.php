@@ -107,7 +107,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="transportasi_id">Transportasi</label><br>
+          <label for="transportasi_id">Armada</label><br>
           <select
             class="select2 form-control"
             id="transportasi_id"
@@ -115,7 +115,7 @@
             required
             style="width: 100%; color: #6e707e;"
           >
-            <option value="" disabled>-- Pilih Transportasi --</option>
+            <option value="" disabled>-- Pilih Armada --</option>
             @foreach ($transportasi as $data)
               <option value="{{ $data->id }}"
                 @if ($data->id == $rute->transportasi_id)

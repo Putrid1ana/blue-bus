@@ -23,7 +23,7 @@
             <th>Nama User</th>
             <th>Nama Armada</th>
             <th>Sisa Kursi</th>
-            <th>Pembayaran</th>
+            <th>Bukti Pembayaran</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -34,7 +34,13 @@
             <td>{{ $data->user->name }}</td>
             <td>{{ $data->transportasi->name }}</td>
             <td>{{ $data->sisa_kursi }}</td>
-            <td>{{ number_format($data->pembayaran, 2) }}</td>
+            <td>
+              @if($data->bukti_pembayaran)
+                <a href="{{ asset('storage/' . $data->bukti_pembayaran) }}" target="_blank">Lihat Bukti</a>
+              @else
+                Tidak ada bukti
+              @endif
+            </td>
             <td class="text-center">
               <form action="{{ route('verifikasi.destroy', $data->id) }}" method="POST">
                 @csrf
@@ -64,21 +70,21 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('verifikasi.store') }}" method="POST">
+      <form action="{{ route('verifikasi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
           <div class="form-group">
             <label for="user_id">Nama User</label>
-            <select class="form-control" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
+            <select class="form-control select2" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
               <option value="" disabled selected>-- Pilih User --</option>
-              @foreach ($users as $user)
+              @foreach ($penumpang as $user)
               <option value="{{ $user->id }}">{{ $user->name }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
             <label for="transportasi_id">Armada</label><br>
-            <select class="form-control" id="transportasi_id" name="transportasi_id" required style="width: 100%; color: #6e707e;">
+            <select class="form-control select2" id="transportasi_id" name="transportasi_id" required style="width: 100%; color: #6e707e;">
               <option value="" disabled selected>-- Pilih Armada --</option>
               @foreach ($transportasi as $data)
               <option value="{{ $data->id }}">{{ $data->kode }} - {{ $data->name }}</option>
@@ -90,8 +96,9 @@
             <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
           </div>
           <div class="form-group">
-            <label for="pembayaran">Pembayaran</label>
-            <input type="text" class="form-control" id="pembayaran" name="pembayaran" placeholder="Pembayaran" required />
+            <label for="bukti_pembayaran">Bukti Pembayaran</label>
+            <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran">
+            <small id="bukti_pembayaran_help" class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
           </div>
         </div>
         <div class="modal-footer">
@@ -111,17 +118,7 @@
 <script>
   $(document).ready(function() {
     $('#dataTable').DataTable();
-  });
-  if (jQuery().select2) {
     $(".select2").select2();
-  }
-
-  function inputNumber(e) {
-    const charCode = (e.which) ? e.which : e.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-  }
+  });
 </script>
 @endsection

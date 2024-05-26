@@ -14,7 +14,7 @@ class Verifikasi extends Model
         'user_id',
         'transportasi_id',
         'sisa_kursi',
-        'pembayaran',
+        'bukti_pembayaran',
     ];
 
     public function user()

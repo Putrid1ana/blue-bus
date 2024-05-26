@@ -20,12 +20,13 @@ class CreatePemesananTable extends Migration
                 $table->string('kode')->default(Str::uuid());
                 $table->string('kursi')->nullable();
                 $table->timestamp('waktu');
-                $table->integer('total');
+                $table->integer('total')->default(0);
                 $table->enum('status', ['Belum Bayar', 'Sudah Bayar'])->default('Belum Bayar');
                 $table->unsignedBigInteger('rute_id');
                 $table->unsignedBigInteger('penumpang_id');
                 $table->unsignedBigInteger('petugas_id')->nullable();
                 $table->unsignedBigInteger('transportasi_id');
+                $table->unsignedBigInteger('transportasi_id')->default(0);
                 $table->timestamps();
 
                 $table->foreign('rute_id')->references('id')->on('rute');

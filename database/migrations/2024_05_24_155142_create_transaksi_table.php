@@ -13,7 +13,7 @@ class CreateTransaksiTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('transportasi_id');
             $table->integer('sisa_kursi');
-            $table->decimal('pembayaran', 10, 2);
+            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
             
             // Foreign keys

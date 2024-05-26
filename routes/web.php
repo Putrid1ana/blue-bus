@@ -32,12 +32,18 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/transportasi', App\Http\Controllers\TransportasiController::class);
             Route::resource('/rute', App\Http\Controllers\RuteController::class);
             Route::resource('/user', App\Http\Controllers\UserController::class);
-            Route::get('/transaksi', [App\Http\Controllers\LaporanController::class, 'index'])->name('transaksi');
+            Route::get('/transaksi', [App\Http\Controllers\LaporanController::class, 'index'])->name('transaksi.index');
             Route::post('/transaksi/store', [App\Http\Controllers\LaporanController::class, 'store'])->name('transaksi.store');
             Route::resource('/transaksi', App\Http\Controllers\LaporanController::class);
+            Route::get('/transaksi', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
             Route::get('/verifikasi', [App\Http\Controllers\VerifikasiController::class, 'index'])->name('verifikasi.index');
             Route::post('/verifikasi', 'VerifikasiController@store')->name('verifikasi.store');
+            Route::post('/verifikasi/store', [App\Http\Controllers\VerifikasiController::class, 'store'])->name('verifikasi.store');
             Route::resource('/verifikasi', App\Http\Controllers\VerifikasiController::class);
+            Route::get('/penumpang', [App\Http\Controllers\PenumpangController::class, 'index'])->name('penumpang.index');
+            Route::post('/penumpang', [App\Http\Controllers\PenumpangController::class, 'store'])->name('penumpang.store');
+            Route::delete('/penumpang/{id}', [App\Http\Controllers\PenumpangController::class, 'destroy'])->name('penumpang.destroy');
+
 
         });
     });

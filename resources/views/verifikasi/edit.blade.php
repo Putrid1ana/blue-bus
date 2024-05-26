@@ -54,7 +54,7 @@
             <label for="user_id">Nama User</label>
             <select class="form-control" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
                 <option value="" disabled>-- Pilih User --</option>
-                @foreach ($users as $user)
+                @foreach ($penumpang as $user)
                     <option value="{{ $user->id }}" {{ $transaksi->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
@@ -73,9 +73,10 @@
             <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" value="{{ $transaksi->sisa_kursi }}" required/>
         </div>
         <div class="form-group">
-            <label for="pembayaran">Pembayaran</label>
-            <input type="text" class="form-control" id="pembayaran" name="pembayaran" value="{{ $transaksi->pembayaran }}" required/>
-        </div>
+    <label for="bukti_pembayaran">Bukti Pembayaran</label>
+    <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran">
+    <small id="bukti_pembayaran_help" class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
+</div>
     </div>
     <div class="card-footer">
         <a href="{{ route('verifikasi.index') }}" class="btn btn-warning mr-2">Kembali</a>

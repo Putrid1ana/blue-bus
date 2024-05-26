@@ -106,11 +106,6 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <h5 class="card-title">{{ $data->transportasi->name }}</h5>
-                  <p class="card-text">
-                    <small class="text-muted">
-                      {{ $data->transportasi->category->name }}
-                    </small>
-                  </p>
                 </td>
                 <td>
                   <h5 class="card-title">{{ $data->tujuan }}</h5>

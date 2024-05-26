@@ -13,25 +13,21 @@ class Transportasi extends Model
         'name',
         'kode',
         'jumlah',
-        'sisa_kursi',
-        'category_id',
+        'kapasitas_bis',
         'status'
     ];
 
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category', 'category_id');
-    }
-
+    // Relasi ke Pemesanan
     public function pemesanan()
     {
-        return $this->hasMany('App\Models\Pemesanan', 'transportasi_id');
+        return $this->hasMany(Pemesanan::class, 'transportasi_id');
     }
 
+    // Menghitung sisa kursi berdasarkan jumlah kursi yang dipesan
     public function hitungSisaKursi()
     {
         // Hitung jumlah total kursi yang sudah dipesan
-        $jumlahDipesan = $this->pemesanan()->count();
+        $jumlahDipesan = $this->pemesanan()->sum('jumlah_kursi');
 
         // Hitung sisa kursi
         $sisaKursi = $this->jumlah - $jumlahDipesan;
@@ -39,5 +35,6 @@ class Transportasi extends Model
         return $sisaKursi;
     }
 
+    // Menentukan nama tabel
     protected $table = 'transportasi';
 }

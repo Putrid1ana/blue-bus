@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Transportasi;
 use Illuminate\Http\Request;
 
@@ -15,9 +14,8 @@ class TransportasiController extends Controller
      */
     public function index()
     {
-        $category = Category::orderBy('name')->get();
-        $transportasi = Transportasi::with('category')->orderBy('kode')->orderBy('name')->get();
-        return view('server.transportasi.index', compact('category', 'transportasi'));
+        $transportasi = Transportasi::orderBy('kode')->orderBy('name')->get();
+        return view('server.transportasi.index', compact('transportasi'));
     }
 
     /**
@@ -27,7 +25,7 @@ class TransportasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('server.transportasi.create');
     }
 
     /**
@@ -42,8 +40,7 @@ class TransportasiController extends Controller
             'name' => 'required',
             'kode' => 'required',
             'jumlah' => 'required|integer',
-            'sisa_kursi' => 'required|integer',
-            'category_id' => 'required',
+            'kapasitas_bis' => 'required|integer',
             'status' => 'required|boolean'
         ]);
 
@@ -55,17 +52,12 @@ class TransportasiController extends Controller
                 'name' => $request->name,
                 'kode' => strtoupper($request->kode),
                 'jumlah' => $request->jumlah,
-                'sisa_kursi' => $request->sisa_kursi,
-                'category_id' => $request->category_id,
+                'kapasitas_bis' => $request->kapasitas_bis,
                 'status' => $request->status
             ]
         );
 
-        if ($request->id) {
-            return redirect()->route('transportasi.index')->with('success', 'Success Update Transportasi!');
-        } else {
-            return redirect()->back()->with('success', 'Success Add Transportasi!');
-        }
+        return redirect()->route('transportasi.index')->with('success', 'Success Add/Update Transportasi!');
     }
 
     /**
@@ -76,7 +68,8 @@ class TransportasiController extends Controller
      */
     public function show($id)
     {
-        //
+        $transportasi = Transportasi::find($id);
+        return view('server.transportasi.show', compact('transportasi'));
     }
 
     /**
@@ -87,9 +80,8 @@ class TransportasiController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::orderBy('name')->get();
         $transportasi = Transportasi::find($id);
-        return view('server.transportasi.edit', compact('category', 'transportasi'));
+        return view('server.transportasi.edit', compact('transportasi'));
     }
 
     /**
@@ -105,8 +97,7 @@ class TransportasiController extends Controller
             'name' => 'required',
             'kode' => 'required',
             'jumlah' => 'required|integer',
-            'sisa_kursi' => 'required|integer',
-            'category_id' => 'required',
+            'kapasitas_bis' => 'required|integer',
             'status' => 'required|boolean'
         ]);
 
@@ -115,8 +106,7 @@ class TransportasiController extends Controller
             'name' => $request->name,
             'kode' => strtoupper($request->kode),
             'jumlah' => $request->jumlah,
-            'sisa_kursi' => $request->sisa_kursi,
-            'category_id' => $request->category_id,
+            'kapasitas_bis' => $request->kapasitas_bis,
             'status' => $request->status
         ]);
 

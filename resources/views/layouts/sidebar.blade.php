@@ -28,15 +28,15 @@
       </div>
     </div>
   </li>
-  <!-- Nav Item - Verifikasi -->
+  <!-- Nav Item - Transaksi -->
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('petugas') }}">
+    <a class="nav-link" href="{{ route('verifikasi.index') }}">
       <i class="fas fa-clipboard-check"></i>
       <span>Transaksi</span></a>
   </li>
   <!-- Nav Item - Transaksi -->
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('transaksi') }}">
+    <a class="nav-link" href="{{ route('transaksi.index') }}">
       <i class="fas fa-shopping-cart"></i>
       <span>Laporan</span></a>
   </li>

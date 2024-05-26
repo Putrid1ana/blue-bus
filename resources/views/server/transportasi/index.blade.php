@@ -100,7 +100,7 @@
               <th>Kode</th>
               <th>Name</th>
               <th>Jumlah Kursi</th>
-              <th>Sisa Kursi</th>
+              <th>Kapasitas Bis</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -112,14 +112,9 @@
                 <td>{{ $data->kode }}</td>
                 <td>
                   <h5 class="card-title">{{ $data->name }}</h5>
-                  <p class="card-text">
-                    <small class="text-muted">
-                      {{ $data->category->name }}
-                    </small>
-                  </p>
                 </td>
                 <td>{{ $data->jumlah }} Kursi</td>
-                <td>{{ $data->sisa_kursi }} Kursi</td>
+                <td>{{ $data->kapasitas_bis }} Kursi</td>
                 <td>{{ $data->status ? 'Tersedia' : 'Tidak Tersedia' }}</td>
                 <td class="text-center">
                   <form
@@ -211,13 +206,13 @@
               />
             </div>
             <div class="form-group">
-              <label for="sisa_kursi">Sisa Kursi</label>
+              <label for="kapasitas_bis">Kapasitas Bis</label>
               <input
                 type="number"
                 class="form-control"
-                id="sisa_kursi"
-                name="sisa_kursi"
-                placeholder="Sisa Kursi"
+                id="kapasitas_bis"
+                name="kapasitas_bis"
+                placeholder="Kapasitas Bis"
                 required
               />
             </div>

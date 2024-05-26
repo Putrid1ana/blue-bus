@@ -16,7 +16,7 @@ class RuteController extends Controller
     public function index()
     {
         $transportasi = Transportasi::orderBy('kode')->orderBy('name')->get();
-        $rute = Rute::with('transportasi.category')->orderBy('created_at', 'desc')->get();
+        $rute = Rute::with('transportasi')->orderBy('created_at', 'desc')->get();
         return view('server.rute.index', compact('rute', 'transportasi'));
     }
 

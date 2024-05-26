@@ -18,12 +18,10 @@ class CreateTransportasiTable extends Migration
             $table->string('name');
             $table->string('kode', 10);
             $table->integer('jumlah');
-            $table->integer('sisa_kursi'); // Add this line
-            $table->unsignedBigInteger('category_id');
+            $table->integer('kapasitas_bis'); // Add this line
             $table->boolean('status')->default(true); 
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('category');
         });
     }
 

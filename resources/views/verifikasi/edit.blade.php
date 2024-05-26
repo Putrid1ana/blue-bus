@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Edit Armada')
-@section('heading', 'Edit Armada')
+@section('title', 'Edit Transaksi')
+@section('heading', 'Edit Transaksi')
 @section('styles')
   <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
   <style>
@@ -46,76 +46,42 @@
 @endsection
 @section('content')
   <div class="card shadow mb-4 mt-2">
-    <form action="{{ route('transportasi.store') }}" method="POST">
-      @csrf
-      <div class="card-body">
-        <input type="hidden" name="id" value="{{ $transportasi->id }}">
+  <form action="{{ route('verifikasi.update', $transaksi->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <div class="modal-body">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            value="{{ $transportasi->name }}"
-            required
-          />
+            <label for="user_id">Nama User</label>
+            <select class="form-control" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
+                <option value="" disabled>-- Pilih User --</option>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}" {{ $transaksi->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
-          <label for="kode">Kode</label>
-          <input
-            type="text"
-            class="form-control"
-            id="kode"
-            name="kode"
-            value="{{ $transportasi->kode }}"
-            required
-          />
+            <label for="transportasi_id">Armada</label><br>
+            <select class="form-control" id="transportasi_id" name="transportasi_id" required style="width: 100%; color: #6e707e;">
+                <option value="" disabled>-- Pilih Armada --</option>
+                @foreach ($transportasi as $data)
+                    <option value="{{ $data->id }}" {{ $transaksi->transportasi_id == $data->id ? 'selected' : '' }}>{{ $data->kode }} - {{ $data->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
-          <label for="jumlah">Jumlah Kursi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="jumlah"
-            name="jumlah"
-            onkeypress="return inputNumber(event)"
-            value="{{ $transportasi->jumlah }}"
-            required
-          />
+            <label for="sisa_kursi">Sisa Kursi</label>
+            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" value="{{ $transaksi->sisa_kursi }}" required/>
         </div>
         <div class="form-group">
-    <label for="kapasitas_bis">Kapasitas Bis</label>
-    <input
-        type="number"
-        class="form-control"
-        id="kapasitas_bis"
-        name="kapasitas bis"
-        placeholder="Kapasitas_bis"
-        value="{{ old('kapasitas_bis', $transportasi->kapasitas_bis ?? '') }}"
-        required
-    />
-</div>
-            <div class="form-group">
-              <label for="status">Status</label>
-              <input
-                type="number"
-                class="form-control"
-                id="status"
-                name="status"
-                placeholder="Status"
-                required
-              />
-            </div>
-
-          </select>
+            <label for="pembayaran">Pembayaran</label>
+            <input type="text" class="form-control" id="pembayaran" name="pembayaran" value="{{ $transaksi->pembayaran }}" required/>
         </div>
-      </div>
-      <div class="card-footer">
-        <a href="{{ route('transportasi.index') }}" class="btn btn-warning mr-2">Kembali</a>
+    </div>
+    <div class="card-footer">
+        <a href="{{ route('verifikasi.index') }}" class="btn btn-warning mr-2">Kembali</a>
         <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form>
+    </div>
+</form>
   </div>
 @endsection
 @section('script')

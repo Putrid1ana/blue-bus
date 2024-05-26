@@ -25,7 +25,6 @@ class CreatePemesananTable extends Migration
                 $table->unsignedBigInteger('rute_id');
                 $table->unsignedBigInteger('penumpang_id');
                 $table->unsignedBigInteger('petugas_id')->nullable();
-                $table->unsignedBigInteger('transportasi_id');
                 $table->unsignedBigInteger('transportasi_id')->default(0);
                 $table->timestamps();
 

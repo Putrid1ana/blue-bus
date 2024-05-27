@@ -17,7 +17,8 @@ class CreateLaporanTable extends Migration
             $table->id();
             $table->unsignedBigInteger('penumpang_id');
             $table->date('tanggal_pemesanan');
-            $table->string('tujuan');
+            $table->time('waktu'); 
+            $table->unsignedBigInteger('rute_id');
             $table->unsignedBigInteger('armada_id');
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
@@ -25,6 +26,7 @@ class CreateLaporanTable extends Migration
             // Foreign keys
             $table->foreign('penumpang_id')->references('id')->on('penumpangs')->onDelete('cascade');
             $table->foreign('armada_id')->references('id')->on('transportasis')->onDelete('cascade');
+            $table->foreign('rute_id')->references('id')->on('transportasis')->onDelete('cascade');
         });
     }
 

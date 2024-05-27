@@ -42,7 +42,7 @@
   </li>
   <!-- Nav Item - Laporan -->
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('laporan.index') }}">
+    <a class="nav-link" href="{{ route('transaksi.index') }}">
       <i class="fas fa-shopping-cart"></i>
       <span>Laporan</span></a>
   </li>

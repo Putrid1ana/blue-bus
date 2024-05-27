@@ -10,14 +10,15 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('penumpang_id');
             $table->unsignedBigInteger('transportasi_id');
+            $table->string('nomor_kursi')->nullable();
             $table->integer('sisa_kursi');
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
             
             // Foreign keys
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('penumpang_id')->references('id')->on('penumpang')->onDelete('cascade');
             $table->foreign('transportasi_id')->references('id')->on('transportasi')->onDelete('cascade');
         });
     }

@@ -69,6 +69,10 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="nomor_kursi">Nomor Kursi</label>
+            <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
+          </div>
+        <div class="form-group">
             <label for="sisa_kursi">Sisa Kursi</label>
             <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" value="{{ $transaksi->sisa_kursi }}" required/>
         </div>

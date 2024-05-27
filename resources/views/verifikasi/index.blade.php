@@ -22,6 +22,7 @@
             <th>No</th>
             <th>Nama User</th>
             <th>Nama Armada</th>
+            <th>Nomor Kursi</th>
             <th>Sisa Kursi</th>
             <th>Bukti Pembayaran</th>
             <th>Action</th>
@@ -31,8 +32,9 @@
           @foreach ($transaksi as $data)
           <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $data->user->name }}</td>
+            <td>{{ $data->penumpang->name }}</td>
             <td>{{ $data->transportasi->name }}</td>
+            <td>{{ $data->nomor_kursi }}</td>
             <td>{{ $data->sisa_kursi }}</td>
             <td>
               @if($data->bukti_pembayaran)
@@ -74,8 +76,8 @@
         @csrf
         <div class="modal-body">
           <div class="form-group">
-            <label for="user_id">Nama User</label>
-            <select class="form-control select2" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
+            <label for="penumpang_id">Nama User</label>
+            <select class="form-control select" id="user_id" name="penumpang_id" required style="width: 100%; color: #6e707e;">
               <option value="" disabled selected>-- Pilih User --</option>
               @foreach ($penumpang as $user)
               <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -84,12 +86,16 @@
           </div>
           <div class="form-group">
             <label for="transportasi_id">Armada</label><br>
-            <select class="form-control select2" id="transportasi_id" name="transportasi_id" required style="width: 100%; color: #6e707e;">
+            <select class="form-control select" id="transportasi_id" name="transportasi_id" required style="width: 100%; color: #6e707e;">
               <option value="" disabled selected>-- Pilih Armada --</option>
               @foreach ($transportasi as $data)
               <option value="{{ $data->id }}">{{ $data->kode }} - {{ $data->name }}</option>
               @endforeach
             </select>
+          </div>
+          <div class="form-group">
+            <label for="nomor_kursi">Nomor Kursi</label>
+            <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
           </div>
           <div class="form-group">
             <label for="sisa_kursi">Sisa Kursi</label>

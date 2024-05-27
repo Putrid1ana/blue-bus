@@ -11,11 +11,17 @@ class Verifikasi extends Model
 
 
     protected $fillable = [
-        'user_id',
+        'penumpang_id',
         'transportasi_id',
+        'nomor_kursi',
         'sisa_kursi',
         'bukti_pembayaran',
     ];
+
+    public function penumpang()
+    {
+        return $this->belongsTo(Penumpang::class);
+    }
 
     public function user()
     {

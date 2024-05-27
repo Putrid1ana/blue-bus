@@ -32,7 +32,7 @@
   <li class="nav-item">
     <a class="nav-link" href="{{ route('penumpang.index') }}">
     <i class="fas fa-users "></i>
-      <span>Pemesan</span></a>
+      <span>Akun</span></a>
   </li>
   <!-- Nav Item - Transaksi -->
   <li class="nav-item">

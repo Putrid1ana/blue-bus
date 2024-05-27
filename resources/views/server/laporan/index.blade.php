@@ -143,7 +143,7 @@
       </div>
       <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="penumpang_id">Nama</label>
             <select class="select2 form-control" id="penumpang_id" name="penumpang_id" required style="width: 100%; color: #6e707e;">
@@ -153,10 +153,9 @@
               @endforeach
             </select>
           </div>
-        </div>
         <div class="form-group">
           <label for="tanggal_pemesanan">Tanggal Pemesanan</label>
-          <input type="date" class="form-control datepicker" id="tanggal_pemesanan" name="tanggal_pemesanan" required>
+          <input type="date" class="select2 form-control datepicker" id="tanggal_pemesanan" name="tanggal_pemesanan" required style="width: 100%; color: #6e707e;">
         </div>
         <div class="form-group">
           <label for="waktu">Waktu</label>
@@ -179,12 +178,13 @@
             <option value="{{ $data->id }}">{{ $data->kode }} - {{ $data->name }}</option>
             @endforeach
           </select>
+        </div>
           <div class="form-group">
             <label for="bukti_pembayaran">Bukti Pembayaran</label>
             <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran" required>
             <small class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
           </div>
-        </div>
+      </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
           <button type="submit" class="btn btn-primary">Tambah</button>

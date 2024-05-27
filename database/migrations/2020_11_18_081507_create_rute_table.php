@@ -20,6 +20,7 @@ class CreateRuteTable extends Migration
             $table->string('end');
             $table->integer('harga');
             $table->time('jam');
+            $table->date('tanggal_berangkat');
             $table->unsignedBigInteger('transportasi_id');
             $table->timestamps();
 

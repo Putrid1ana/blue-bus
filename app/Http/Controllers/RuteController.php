@@ -44,6 +44,7 @@ class RuteController extends Controller
             'end' => 'required',
             'harga' => 'required',
             'jam' => 'required',
+            'tanggal_berangkat' => 'required|date',
             'transportasi_id' => 'required'
         ]);
 
@@ -57,6 +58,7 @@ class RuteController extends Controller
                 'end' => $request->end,
                 'harga' => $request->harga,
                 'jam' => $request->jam,
+                'tanggal_berangkat' => 'required|date',
                 'transportasi_id' => $request->transportasi_id,
             ]
         );

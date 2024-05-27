@@ -15,6 +15,7 @@ class Rute extends Model
         'end',
         'harga',
         'jam',
+        'tanggal_berangkat',
         'transportasi_id'
     ];
 

@@ -70,7 +70,7 @@
       <div class="card shadow h-100 py-2">
         <div class="card-body text-center">
           <img src="{{ asset('img/bus6.jpg') }}" class="img-src" alt="Descriptive Alt Text">
-          <p>layanan bus yang sangat nyaman dan dilengakapi beberapa fasilitas yang lengkap akan menemani perjalanan anda</p>
+          <p>layanan bus yang sangat nyaman dan dilengkapi beberapa fasilitas yang lengkap yang akan menemani perjalanan anda</p>
         </div>
       </div>
     </div>

@@ -44,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/penumpang', [App\Http\Controllers\PenumpangController::class, 'index'])->name('penumpang.index');
             Route::post('/penumpang', [App\Http\Controllers\PenumpangController::class, 'store'])->name('penumpang.store');
             Route::delete('/penumpang/{id}', [App\Http\Controllers\PenumpangController::class, 'destroy'])->name('penumpang.destroy');
+            Route::resource('penumpang', App\Http\Controllers\PenumpangController::class);
+            Route::get('penumpang/{id}/edit', [App\Http\Controllers\PenumpangController::class, 'edit'])->name('penumpang.edit');
+
         });
     });
 

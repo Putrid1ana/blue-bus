@@ -65,4 +65,39 @@ class PenumpangController extends Controller
     }
 
     // Metode lainnya seperti edit, update, dan destroy dapat ditambahkan di sini
+    public function edit($id)
+{
+    $penumpang = Penumpang::findOrFail($id);
+    return view('penumpang.edit', compact('penumpang'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255|unique:penumpang,username,'.$id,
+        'password' => 'required|string|min:8',
+    ]);
+
+    $penumpang = Penumpang::findOrFail($id);
+
+    $penumpang->update([
+        'name' => $request->name,
+        'username' => $request->username,
+        'password' => bcrypt($request->password),
+    ]);
+
+    return redirect()->route('penumpang.index')
+                     ->with('success', 'Penumpang berhasil diperbarui.');
+}
+
+public function destroy($id)
+{
+    $penumpang = Penumpang::findOrFail($id);
+    $penumpang->delete();
+
+    return redirect()->route('penumpang.index')
+                     ->with('success', 'Penumpang berhasil dihapus.');
+}
+
 }

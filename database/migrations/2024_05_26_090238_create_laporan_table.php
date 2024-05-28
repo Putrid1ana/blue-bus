@@ -24,9 +24,9 @@ class CreateLaporanTable extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('penumpang_id')->references('id')->on('penumpangs')->onDelete('cascade');
-            $table->foreign('armada_id')->references('id')->on('transportasis')->onDelete('cascade');
-            $table->foreign('rute_id')->references('id')->on('transportasis')->onDelete('cascade');
+            $table->foreign('penumpang_id')->references('id')->on('penumpang')->onDelete('cascade');
+            $table->foreign('armada_id')->references('id')->on('transportasi')->onDelete('cascade');
+            $table->foreign('rute_id')->references('id')->on('transportasi')->onDelete('cascade');
         });
     }
 

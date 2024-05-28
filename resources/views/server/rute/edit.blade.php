@@ -107,16 +107,6 @@
           />
         </div>
         <div class="form-group">
-              <label for="tanggal_berangkat">Tanggal Berangkat</label> <!-- New Input -->
-              <input
-                type="date"
-                class="form-control"
-                id="tanggal_berangkat"
-                name="tanggal_berangkat"
-                required
-              />
-            </div>
-        <div class="form-group">
           <label for="transportasi_id">Armada</label><br>
           <select
             class="select2 form-control"

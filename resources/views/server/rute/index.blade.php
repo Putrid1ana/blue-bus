@@ -97,7 +97,6 @@
               <td>Tujuan & Rute</td>
               <td>Harga</td>
               <td>Waktu</td>
-              <td>Tanggal Berangkat</td> 
               <th>Action</th>
             </tr>
           </thead>
@@ -118,7 +117,6 @@
                 </td>
                 <td>Rp. {{ number_format($data->harga, 0, ',', '.') }}</td>
                 <td>{{ date('H:i', strtotime($data->jam)) }}</td>
-                <td>{{ date('d-m-Y', strtotime($data->tanggal_berangkat)) }}</td> 
                 <td>
                   <form
                     action="{{ route('rute.destroy', $data->id) }}"
@@ -226,16 +224,6 @@
                 class="form-control"
                 id="jam"
                 name="jam"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="tanggal_berangkat">Tanggal Berangkat</label> <!-- New Input -->
-              <input
-                type="date"
-                class="form-control"
-                id="tanggal_berangkat"
-                name="tanggal_berangkat"
                 required
               />
             </div>

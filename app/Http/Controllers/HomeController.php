@@ -28,9 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         $rute = Rute::count();
-        $pendapatan = Pemesanan::where('status', 'Sudah Bayar')->sum('total');
+        //$pendapatan = Pemesanan::where('status', 'Sudah Bayar')->sum('total');
         $transportasi = Transportasi::count();
         $user = User::count();
-        return view('server.home', compact('rute', 'pendapatan', 'transportasi', 'user'));
+        return view('server.home', compact('rute', 'transportasi', 'user'));
     }
 }

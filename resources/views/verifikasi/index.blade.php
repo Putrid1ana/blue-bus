@@ -20,11 +20,12 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>NIK</th>
             <th>Nama User</th>
+            <th>Telpon</th>
             <th>Nama Armada</th>
             <th>Nomor Kursi</th>
-            <th>Sisa Kursi</th>
-            <th>Bukti Pembayaran</th>
+            <th>Verifikasi</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -32,17 +33,13 @@
           @foreach ($transaksi as $data)
           <tr>
             <td>{{ $loop->iteration }}</td>
+            <td>{{ $data->nik }}</td>
             <td>{{ $data->penumpang->name }}</td>
+            <td>{{ $data->telepon }}</td>
             <td>{{ $data->transportasi->name }}</td>
             <td>{{ $data->nomor_kursi }}</td>
-            <td>{{ $data->sisa_kursi }}</td>
-            <td>
-              @if($data->bukti_pembayaran)
-                <a href="{{ asset('storage/' . $data->bukti_pembayaran) }}" target="_blank">Lihat Bukti</a>
-              @else
-                Tidak ada bukti
-              @endif
-            </td>
+            <td>{{ $data->verifikasi ? 'yes' : 'no' }}</td>
+            
             <td class="text-center">
               <form action="{{ route('verifikasi.destroy', $data->id) }}" method="POST">
                 @csrf
@@ -76,6 +73,10 @@
         @csrf
         <div class="modal-body">
           <div class="form-group">
+            <label for="nik">NIK</label>
+            <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" required />
+          </div>
+          <div class="form-group">
             <label for="penumpang_id">Nama User</label>
             <select class="form-control select" id="user_id" name="penumpang_id" required style="width: 100%; color: #6e707e;">
               <option value="" disabled selected>-- Pilih User --</option>
@@ -83,6 +84,10 @@
               <option value="{{ $user->id }}">{{ $user->name }}</option>
               @endforeach
             </select>
+          </div>
+          <div class="form-group">
+            <label for="telepon">Telepon</label>
+            <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon" required />
           </div>
           <div class="form-group">
             <label for="transportasi_id">Armada</label><br>
@@ -98,14 +103,13 @@
             <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
           </div>
           <div class="form-group">
-            <label for="sisa_kursi">Sisa Kursi</label>
-            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
-          </div>
-          <div class="form-group">
-            <label for="bukti_pembayaran">Bukti Pembayaran</label>
-            <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran">
-            <small id="bukti_pembayaran_help" class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
-          </div>
+            <label for="verifikasi">Verifikasi</label>
+            <select class="form-control" id="verifikasi" name="verifikasi" required>
+              <option value="" disabled selected>-- Verifikasi --</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
+          </select>               
+        </div>        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>

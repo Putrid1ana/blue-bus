@@ -13,6 +13,8 @@ class RuteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //web
     public function index()
     {
         $transportasi = Transportasi::orderBy('kode')->orderBy('name')->get();

@@ -10,11 +10,12 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
+            $table->string('nik', 16)->unique();
             $table->unsignedBigInteger('penumpang_id');
+            $table->string('telepon', 15);
             $table->unsignedBigInteger('transportasi_id');
             $table->string('nomor_kursi')->nullable();
-            $table->integer('sisa_kursi');
-            $table->string('bukti_pembayaran')->nullable();
+            $table->enum('verifikasi', ['yes', 'no']);
             $table->timestamps();
             
             // Foreign keys

@@ -23,26 +23,22 @@ class VerifikasiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'nik' => 'required|string|max:255',
             'penumpang_id' => 'required|exists:penumpang,id',
+            'telepon' => 'required|string|max:255',
             'transportasi_id' => 'required|exists:transportasi,id',
-            'nomor_kursi' => 'nullable|string', 
-            'sisa_kursi' => 'required|numeric',
-            'bukti_pembayaran' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        ], [
-            'bukti_pembayaran.file' => 'Bukti pembayaran harus berupa file',
-            'bukti_pembayaran.mimes' => 'Bukti pembayaran harus berupa file dengan format: jpg, jpeg, png, pdf',
+            'nomor_kursi' => 'nullable|string',
+            'verifikasi' => 'required|boolean'
         ]);
-    
-        $buktiPembayaran = null;
-        if ($request->hasFile('bukti_pembayaran')) {
-            $buktiPembayaran = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
-        }
+
     
         Verifikasi::create([
+            'nik' => $validated['nik'],
+            'telepon' => $validated['telepon'],
             'penumpang_id' => $validated['penumpang_id'],
             'transportasi_id' => $validated['transportasi_id'],
-            'sisa_kursi' => $validated['sisa_kursi'],
-            'bukti_pembayaran' => $buktiPembayaran,
+            'nomor_kursi' => $validated['nomor_kursi'],
+            'verifikasi' => $validated['verifikasi'],
         ]);
     
         return redirect()->route('verifikasi.index')->with('success', 'Transaksi berhasil ditambahkan.');
@@ -60,29 +56,15 @@ class VerifikasiController extends Controller
     public function update(Request $request, $id)
 {
     $validated = $request->validate([
+        'nik' => 'required|string|max:255',
         'penumpang_id' => 'required|exists:penumpang,id',
+        'telepon' => 'required|string|max:255',
         'transportasi_id' => 'required|exists:transportasi,id',
-        'nomor_kursi' => 'nullable|string', 
-        'sisa_kursi' => 'required|numeric',
-        'bukti_pembayaran' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-    ], [
-        'bukti_pembayaran.file' => 'Bukti pembayaran harus berupa file',
-        'bukti_pembayaran.mimes' => 'Bukti pembayaran harus berupa file dengan format: jpg, jpeg, png',
+        'nomor_kursi' => 'nullable|string',
+        'verifikasi' => 'required|boolean'
     ]);
 
     $transaksi = Verifikasi::findOrFail($id);
-
-    // Jika ada pembaruan pada bukti pembayaran
-    if ($request->hasFile('bukti_pembayaran')) {
-        // Hapus bukti pembayaran lama jika ada
-        if ($transaksi->bukti_pembayaran) {
-            Storage::disk('public')->delete($transaksi->bukti_pembayaran);
-        }
-        $validated['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
-    } else {
-        // Jangan mengubah nilai bukti_pembayaran jika tidak ada file yang diunggah
-        unset($validated['bukti_pembayaran']);
-    }
 
     $transaksi->update($validated);
 
@@ -92,9 +74,6 @@ class VerifikasiController extends Controller
     public function destroy($id)
     {
         $pemesanan = Verifikasi::findOrFail($id);
-        if ($pemesanan->bukti_pembayaran) {
-            Storage::disk('public')->delete($pemesanan->bukti_pembayaran);
-        }
         $pemesanan->delete();
 
         return redirect()->route('verifikasi.index')->with('success', 'Transaksi berhasil dihapus.');

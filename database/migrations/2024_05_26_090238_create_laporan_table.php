@@ -20,7 +20,6 @@ class CreateLaporanTable extends Migration
             $table->time('waktu'); 
             $table->unsignedBigInteger('rute_id');
             $table->unsignedBigInteger('armada_id');
-            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
 
             // Foreign keys

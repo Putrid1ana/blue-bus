@@ -91,7 +91,6 @@
             <th>Waktu</th>
             <th>Tujuan</th>
             <th>Armada</th>
-            <th>Bukti Pembayaran</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -104,13 +103,7 @@
             <td>{{ $data->waktu }}</td>
             <td>{{ optional($data->rute)->tujuan ?? 'N/A' }}</td>
             <td>{{ optional($data->armada)->name ?? 'N/A' }}</td>
-            <td>
-              @if($data->bukti_pembayaran)
-              <a href="{{ asset('storage/' . $data->bukti_pembayaran) }}" target="_blank">Lihat Bukti</a>
-              @else
-              Tidak ada bukti
-              @endif
-            </td>
+
             <td class="text-center">
               <form action="{{ route('transaksi.destroy', $data->id) }}" method="POST">
                 @csrf
@@ -179,11 +172,6 @@
             @endforeach
           </select>
         </div>
-          <div class="form-group">
-            <label for="bukti_pembayaran">Bukti Pembayaran</label>
-            <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran" required>
-            <small class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
-          </div>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>

@@ -14,6 +14,7 @@ class Transportasi extends Model
         'kode',
         'jumlah',
         'kapasitas_bis',
+        'sisa_kursi',
         'status'
     ];
 
@@ -35,6 +36,5 @@ class Transportasi extends Model
         return $sisaKursi;
     }
 
-    // Menentukan nama tabel
     protected $table = 'transportasi';
 }

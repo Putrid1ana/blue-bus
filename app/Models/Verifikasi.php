@@ -11,11 +11,12 @@ class Verifikasi extends Model
 
 
     protected $fillable = [
+        'nik',
         'penumpang_id',
+        'telepon',
         'transportasi_id',
         'nomor_kursi',
-        'sisa_kursi',
-        'bukti_pembayaran',
+        'verifikasi'
     ];
 
     public function penumpang()

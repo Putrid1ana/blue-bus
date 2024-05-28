@@ -9,18 +9,17 @@ class Rute extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'tujuan',
-        'start',
-        'end',
-        'harga',
-        'jam',
-        'transportasi_id'
+    protected $guarded = [
+        'id'
     ];
 
     public function transportasi()
     {
         return $this->belongsTo('App\Models\Transportasi', 'transportasi_id');
+    }
+
+    public function trans(){
+        return $this->belongsTo(Transportasi::class, 'transportasi_id', 'id');
     }
 
     protected $table = 'rute';

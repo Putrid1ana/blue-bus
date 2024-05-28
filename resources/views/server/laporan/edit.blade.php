@@ -47,11 +47,6 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="bukti_pembayaran">Bukti Pembayaran</label>
-                <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran">
-                <small class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
-            </div>
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

@@ -18,7 +18,8 @@ class CreateTransportasiTable extends Migration
             $table->string('name');
             $table->string('kode', 10);
             $table->integer('jumlah');
-            $table->integer('kapasitas_bis'); // Add this line
+            $table->integer('kapasitas_bis');
+            $table->integer('sisa_kursi');
             $table->boolean('status')->default(true); 
             $table->timestamps();
 

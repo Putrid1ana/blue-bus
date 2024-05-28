@@ -64,7 +64,6 @@ class LaporanController extends Controller
             'waktu' => 'required',
             'rute_id' => 'required',
             'armada_id' => 'required',
-            'bukti_pembayaran' => 'nullable|file|mimes:jpeg,png,jpg,pdf',
         ]);
 
         $laporan = Laporan::find($id);
@@ -77,10 +76,6 @@ class LaporanController extends Controller
         $laporan->waktu = $request->input('waktu');
         $laporan->rute_id = $request->input('rute_id');
         $laporan->armada_id = $request->input('armada_id');
-
-        if ($request->hasFile('bukti_pembayaran')) {
-            $laporan->bukti_pembayaran = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
-        }
 
         $laporan->save();
 
@@ -115,7 +110,6 @@ class LaporanController extends Controller
             'waktu' => 'required',
             'rute_id' => 'required',
             'armada_id' => 'required',
-            'bukti_pembayaran' => 'required|file|mimes:jpeg,png,jpg,pdf',
         ]);
 
         $tanggalPemesanan = Carbon::parse($request->input('tanggal_pemesanan'));
@@ -126,7 +120,6 @@ class LaporanController extends Controller
             'waktu' => $request->input('waktu'),
             'rute_id' => $request->input('rute_id'),
             'armada_id' => $request->input('armada_id'),
-            'bukti_pembayaran' => $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public'),
         ]);
 
         $laporan->save();

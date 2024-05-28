@@ -41,6 +41,7 @@ class TransportasiController extends Controller
             'kode' => 'required',
             'jumlah' => 'required|integer',
             'kapasitas_bis' => 'required|integer',
+            'sisa_kursi' => 'required|integer', 
             'status' => 'required|boolean'
         ]);
 
@@ -53,6 +54,7 @@ class TransportasiController extends Controller
                 'kode' => strtoupper($request->kode),
                 'jumlah' => $request->jumlah,
                 'kapasitas_bis' => $request->kapasitas_bis,
+                'sisa_kursi' => $request->sisa_kursi,
                 'status' => $request->status
             ]
         );
@@ -98,6 +100,7 @@ class TransportasiController extends Controller
             'kode' => 'required',
             'jumlah' => 'required|integer',
             'kapasitas_bis' => 'required|integer',
+            'sisa_kursi' => 'required|numeric',
             'status' => 'required|boolean'
         ]);
 
@@ -107,6 +110,7 @@ class TransportasiController extends Controller
             'kode' => strtoupper($request->kode),
             'jumlah' => $request->jumlah,
             'kapasitas_bis' => $request->kapasitas_bis,
+            'sisa_kursi' => $request->sisa_kursi,
             'status' => $request->status
         ]);
 

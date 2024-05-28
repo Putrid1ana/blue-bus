@@ -50,6 +50,10 @@
     @csrf
     @method('PUT')
     <div class="modal-body">
+      <div class="form-group">
+        <label for="nik">NIK</label>
+        <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" readonly />
+      </div>
         <div class="form-group">
             <label for="user_id">Nama User</label>
             <select class="form-control" id="user_id" name="user_id" required style="width: 100%; color: #6e707e;">
@@ -58,6 +62,10 @@
                     <option value="{{ $user->id }}" {{ $transaksi->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+          <label for="telepon">Telepon</label>
+          <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon" readonly />
         </div>
         <div class="form-group">
             <label for="transportasi_id">Armada</label><br>
@@ -72,15 +80,15 @@
             <label for="nomor_kursi">Nomor Kursi</label>
             <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
           </div>
-        <div class="form-group">
-            <label for="sisa_kursi">Sisa Kursi</label>
-            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" value="{{ $transaksi->sisa_kursi }}" required/>
-        </div>
-        <div class="form-group">
-    <label for="bukti_pembayaran">Bukti Pembayaran</label>
-    <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran">
-    <small id="bukti_pembayaran_help" class="form-text text-muted">Unggah foto atau teks bukti pembayaran disini.</small>
-</div>
+          <div class="form-group">
+            <label for="verifikasi">Verifikasi</label>
+            <select class="form-control" id="verifikasi" name="verifikasi" required>
+              <option value="" disabled selected>-- Verifikasi --</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
+          </select>
+                
+        </div>        
     </div>
     <div class="card-footer">
         <a href="{{ route('verifikasi.index') }}" class="btn btn-warning mr-2">Kembali</a>

@@ -18,7 +18,6 @@ class Laporan extends Model
         'waktu',
         'rute_id',
         'armada_id',
-        'bukti_pembayaran',
     ];
 
     // Tambahkan casting

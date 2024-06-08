@@ -15,7 +15,7 @@ class CreateTransaksiTable extends Migration
             $table->string('telepon', 15);
             $table->unsignedBigInteger('transportasi_id');
             $table->string('nomor_kursi')->nullable();
-            $table->enum('verifikasi', ['yes', 'no']);
+            $table->integer('sisa_kursi');
             $table->timestamps();
             
             // Foreign keys

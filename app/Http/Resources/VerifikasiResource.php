@@ -24,7 +24,7 @@ class VerifikasiResource extends JsonResource
             'transportasi_name' => $this->transportasi->name,
             'transportasi_kode' => $this->transportasi_id->kode,
             'nomor_kursi' =>$this->nomor_kursi,
-            'verifikasi' =>$this->verifikasi
+            'sisa_kusi' =>$this->sisa_kursi
         ];
     }
 }

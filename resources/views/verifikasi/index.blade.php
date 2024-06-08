@@ -25,7 +25,7 @@
             <th>Telpon</th>
             <th>Nama Armada</th>
             <th>Nomor Kursi</th>
-            <th>Verifikasi</th>
+            <th>Sisa Kursi</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -38,7 +38,7 @@
             <td>{{ $data->telepon }}</td>
             <td>{{ $data->transportasi->name }}</td>
             <td>{{ $data->nomor_kursi }}</td>
-            <td>{{ $data->verifikasi ? 'yes' : 'no' }}</td>
+            <td>{{ $data->sisa_kursi }}</td>
             
             <td class="text-center">
               <form action="{{ route('verifikasi.destroy', $data->id) }}" method="POST">
@@ -103,13 +103,9 @@
             <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
           </div>
           <div class="form-group">
-            <label for="verifikasi">Verifikasi</label>
-            <select class="form-control" id="verifikasi" name="verifikasi" required>
-              <option value="" disabled selected>-- Verifikasi --</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
-          </select>               
-        </div>        
+            <label for="sisa_kursi">Sisa Kursi</label>
+            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>

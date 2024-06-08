@@ -67,10 +67,6 @@
         <input type="number" class="form-control" id="kapasitas_bis" name="kapasitas bis" placeholder="Kapasitas_bis" value="{{ old('kapasitas_bis', $transportasi->kapasitas_bis ?? '') }}" required />
       </div>
       <div class="form-group">
-        <label for="sisa_kursi">Sisa Kursi</label>
-        <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
-      </div>
-      <div class="form-group">
         <label for="status">Status</label>
         <input type="number" class="form-control" id="status" name="status" placeholder="Status" required />
       </div>

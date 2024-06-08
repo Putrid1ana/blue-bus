@@ -22,7 +22,7 @@ class VerifikasiApiController extends Controller
             'telepon' => 'required|string|max:255',
             'transportasi_id' => 'required|exists:transportasi,id',
             'nomor_kursi' => 'nullable|string',
-            'verifikasi' => 'required|boolean',
+            'sisa_kursi' => 'required|integer'
         ]);
     
         $verifikasi = Verifikasi::create([
@@ -31,7 +31,7 @@ class VerifikasiApiController extends Controller
             'penumpang_id' => $request->penumpang_id,
             'transportasi_id' => $request->transportasi_id,
             'nomor_kursi' => $request->nomor_kursi,
-            'verifikasi' => $request->verifikasi,
+            'sisa_kursi' => $request->sisa_kursi
         ]);
         return new VerifikasiResource($verifikasi);
     }
@@ -44,7 +44,7 @@ class VerifikasiApiController extends Controller
             'telepon' => 'required|string|max:255',
             'transportasi_id' => 'required|exists:transportasi,id',
             'nomor_kursi' => 'nullable|string',
-            'verifikasi' => 'required|boolean',
+            'sisa_kursi' => 'required|integer'
         ]);
     
         $verifikasi = Verifikasi::findOrFail($id);
@@ -53,7 +53,7 @@ class VerifikasiApiController extends Controller
         $verifikasi->penumpang_id = $validated['penumpang_id'];
         $verifikasi->transportasi_id = $validated['transportasi_id'];
         $verifikasi->nomor_kursi = $validated['nomor_kursi'];
-        $verifikasi->verifikasi = $validated['verifikasi'];
+        $verifikasi->sisa_kursi = $validated['sisa_kursi'];
         $verifikasi->save();
     
         return new VerifikasiResource($verifikasi);

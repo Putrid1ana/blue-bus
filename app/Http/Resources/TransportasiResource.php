@@ -20,7 +20,6 @@ class TransportasiResource extends JsonResource
             'kode' => $this->kode,
             'jumlah' => $this->jumlah,
             'kapasitas_bis' => $this->kapasitas_bis,
-            'sisa_kusi' =>$this->sisa_kursi,
             'status' => $this->status
         ];
     }

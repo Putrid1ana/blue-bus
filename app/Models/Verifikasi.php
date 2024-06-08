@@ -16,7 +16,7 @@ class Verifikasi extends Model
         'telepon',
         'transportasi_id',
         'nomor_kursi',
-        'verifikasi'
+        'sisa_kursi'
     ];
 
     public function penumpang()
@@ -32,6 +32,18 @@ class Verifikasi extends Model
     public function transportasi()
     {
         return $this->belongsTo(Transportasi::class, 'transportasi_id');
+    }
+
+    // Menghitung sisa kursi berdasarkan jumlah kursi yang dipesan
+    public function hitungSisaKursi()
+    {
+        // Hitung jumlah total kursi yang sudah dipesan
+        $jumlahDipesan = $this->pemesanan()->sum('jumlah_kursi');
+
+        // Hitung sisa kursi
+        $sisaKursi = $this->jumlah - $jumlahDipesan;
+
+        return $sisaKursi;
     }
 
     protected $table = 'transaksi';

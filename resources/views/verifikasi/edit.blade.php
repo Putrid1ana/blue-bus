@@ -81,14 +81,9 @@
             <input type="text" class="form-control" id="nomor_kursi" name="nomor_kursi" placeholder="Nomor Kursi" required />
           </div>
           <div class="form-group">
-            <label for="verifikasi">Verifikasi</label>
-            <select class="form-control" id="verifikasi" name="verifikasi" required>
-              <option value="" disabled selected>-- Verifikasi --</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
-          </select>
-                
-        </div>        
+            <label for="sisa_kursi">Sisa Kursi</label>
+            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
+          </div> 
     </div>
     <div class="card-footer">
         <a href="{{ route('verifikasi.index') }}" class="btn btn-warning mr-2">Kembali</a>

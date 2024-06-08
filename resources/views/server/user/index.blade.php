@@ -187,7 +187,6 @@
               >
                 <option value="" disabled selected>-- Pilih Level User --</option>
                 <option value="Admin">Admin</option>
-                <option value="Penumpang">Penumpang</option>
               </select>
             </div>
             <div class="form-group">

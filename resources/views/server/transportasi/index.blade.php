@@ -92,7 +92,6 @@
             <th>Name</th>
             <th>Jumlah Kursi</th>
             <th>Kapasitas Bis</th>
-            <th>Sisa Kursi</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -107,7 +106,6 @@
             </td>
             <td>{{ $data->jumlah }} Kursi</td>
             <td>{{ $data->kapasitas_bis }} Kursi</td>
-            <td>{{ $data->sisa_kursi }}</td>
             <td>{{ $data->status ? 'Tersedia' : 'Tidak Tersedia' }}</td>
             <td class="text-center">
               <form action="{{ route('transportasi.destroy', $data->id) }}" method="POST">
@@ -155,10 +153,6 @@
           <div class="form-group">
             <label for="kapasitas_bis">Kapasitas Bis</label>
             <input type="number" class="form-control" id="kapasitas_bis" name="kapasitas_bis" placeholder="Kapasitas Bis" required />
-          </div>
-          <div class="form-group">
-            <label for="sisa_kursi">Sisa Kursi</label>
-            <input type="text" class="form-control" id="sisa_kursi" name="sisa_kursi" placeholder="Sisa Kursi" required />
           </div>
           <div class="form-group">
             <label for="status">Status</label><br>

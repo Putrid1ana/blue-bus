@@ -28,7 +28,7 @@ class VerifikasiController extends Controller
             'telepon' => 'required|string|max:255',
             'transportasi_id' => 'required|exists:transportasi,id',
             'nomor_kursi' => 'nullable|string',
-            'verifikasi' => 'required|boolean'
+            'sisa_kursi' => 'required|integer'
         ]);
 
     
@@ -38,7 +38,7 @@ class VerifikasiController extends Controller
             'penumpang_id' => $validated['penumpang_id'],
             'transportasi_id' => $validated['transportasi_id'],
             'nomor_kursi' => $validated['nomor_kursi'],
-            'verifikasi' => $validated['verifikasi'],
+            'sisa_kursi' => $validated['sisa_kursi'],
         ]);
     
         return redirect()->route('verifikasi.index')->with('success', 'Transaksi berhasil ditambahkan.');
@@ -61,7 +61,7 @@ class VerifikasiController extends Controller
         'telepon' => 'required|string|max:255',
         'transportasi_id' => 'required|exists:transportasi,id',
         'nomor_kursi' => 'nullable|string',
-        'verifikasi' => 'required|boolean'
+        'sisa_kursi' => 'required|integer'
     ]);
 
     $transaksi = Verifikasi::findOrFail($id);

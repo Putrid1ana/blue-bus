@@ -19,7 +19,6 @@ class CreateTransportasiTable extends Migration
             $table->string('kode', 10);
             $table->integer('jumlah');
             $table->integer('kapasitas_bis');
-            $table->integer('sisa_kursi');
             $table->boolean('status')->default(true); 
             $table->timestamps();
 

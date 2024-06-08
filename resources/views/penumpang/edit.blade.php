@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Edit Penumpang')
-@section('heading', 'Edit Penumpang')
+@section('title', 'Edit Akun')
+@section('heading', 'Edit Akun')
 @section('styles')
 <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 <style>
